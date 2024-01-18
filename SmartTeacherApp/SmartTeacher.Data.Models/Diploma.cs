@@ -1,5 +1,4 @@
-﻿using SmartTeacher.Data.Models.Enums.Diploma;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SmartTeacher.Data.Models
 {
