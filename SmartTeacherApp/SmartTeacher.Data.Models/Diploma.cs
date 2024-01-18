@@ -1,5 +1,4 @@
-﻿using SmartTeacher.Data.Models.Enums.Diploma;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SmartTeacher.Data.Models
 {
@@ -14,7 +13,7 @@ namespace SmartTeacher.Data.Models
         [Required]
         public string Institution { get; set; } = null!;
         [Required]
-        public QualificationLevel QualificationLevel { get; set; }
+        public string QualificationLevel { get; set; }
         //TODO
         public string Specification { get; set; } = null!;
         //
