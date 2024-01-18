@@ -25,11 +25,11 @@ namespace SmartTeacher.Data.Models
         public string EmailAddress { get; set; } = null!;
         public DateTime BirthDate { get; set; }
         [Required]
-        public BirthPlace BirthPlace { get; set; } 
+        public string BirthPlace { get; set; } 
         [Required]
-        public Position Position { get; set; }
+        public string Position { get; set; }
         [Required]
-        public Subject Subject { get; set; }
+        public string Subject { get; set; }
 
 
     }
