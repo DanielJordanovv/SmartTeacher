@@ -1,8 +1,8 @@
 ﻿namespace SmartTeacher.Data.Models.SeederTables
 {
-    public class Position
+    public class FormOfEducation
     {
         public int Id { get; set; }
-        public string PositionName { get; set; } = null!;
+        public string EductionForm { get; set; } = null!;
     }
 }

@@ -1,15 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using SmartTeacher.Data.Models.SeederTables;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartTeacher.Data.Models
 {
-    public class Teacher
+    public class Teacher:IdentityUser<Guid>
     {
         public Teacher()
         {
             this.Id = Guid.NewGuid();
         }
-        [Required]
-        public Guid Id { get; set; }
         [Required]
         [StringLength(15,ErrorMessage="First name should be between 3 and 15",MinimumLength =3)]
         public string FirstName { get; set; } = null!;
@@ -19,18 +20,16 @@ namespace SmartTeacher.Data.Models
         [Required]
         [StringLength(15, ErrorMessage = "Last name should be between 5 and 15", MinimumLength = 5)]
         public string LastName { get; set; } = null!;
-        [Required]
-        [EmailAddress]
-        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Incorect email.")]
-        public string EmailAddress { get; set; } = null!;
         public DateTime BirthDate { get; set; }
         [Required]
-        public string BirthPlace { get; set; } 
+        [ForeignKey("BirthPlace")]
+        public int BirthPlaceId { get; set; }
+        public virtual BirthPlace BirthPlace { get; set; } = null!;
         [Required]
-        public string Position { get; set; }
+        [ForeignKey("Position")]
+        public int PositionId { get; set; }
+        public virtual Position Position { get; set; } = null!;
         [Required]
-        public string Subject { get; set; }
-
-
+        public  string Subject { get; set; } = null!;
     }
 }
