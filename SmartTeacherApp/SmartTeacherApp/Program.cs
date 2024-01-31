@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SmartTeacherApp.Data;
+using SmartTeacher.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
