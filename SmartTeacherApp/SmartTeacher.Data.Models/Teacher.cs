@@ -1,36 +1,50 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using static SmartTeacher.Common.EntityValidationConstants.Teacher;
 
 namespace SmartTeacher.Data.Models
 {
-    public class Teacher
+    public class Teacher : IdentityUser<Guid>
     {
         public Teacher()
         {
             this.Id = Guid.NewGuid();
+            this.TestPeriods = new HashSet<TestPeriod>();
+            this.Diplomas = new HashSet<Diploma>();
+            this.TeacherCourses = new HashSet<TeacherCourse>();
+            //this.TeacherCourseId = Guid.NewGuid();
         }
         [Required]
-        public Guid Id { get; set; }
-        [Required]
-        [StringLength(15,ErrorMessage="First name should be between 3 and 15",MinimumLength =3)]
+        [StringLength(FirstNameMaxLength, ErrorMessage = FirstNameErrorMessage, MinimumLength = FirstNameMinLenght)]
         public string FirstName { get; set; } = null!;
         [Required]
-        [StringLength(15, ErrorMessage = "Middle name should be between 5 and 15", MinimumLength = 5)]
+        [StringLength(MiddleNameMaxLength, ErrorMessage = MiddleNameErrorMessage, MinimumLength = MiddleNameMinLenght)]
         public string MiddleName { get; set; } = null!;
         [Required]
-        [StringLength(15, ErrorMessage = "Last name should be between 5 and 15", MinimumLength = 5)]
+        [StringLength(LastNameMaxLength, ErrorMessage = LastNameErrorMessage, MinimumLength = LastNameMinLenght)]
         public string LastName { get; set; } = null!;
-        [Required]
-        [EmailAddress]
-        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Incorect email.")]
-        public string EmailAddress { get; set; } = null!;
         public DateTime BirthDate { get; set; }
         [Required]
-        public string BirthPlace { get; set; } 
+        [StringLength(BirthplaceMaxLength, ErrorMessage = BirthplaceErrorMessage, MinimumLength = BirthplaceMinLenght)]
+        public string BirthPlace { get; set; } = null!;
         [Required]
-        public string Position { get; set; }
+        [StringLength(PossitionMaxLength, ErrorMessage = PossitionErrorMessage, MinimumLength = PossitionMinLenght)]
+        public string Position { get; set; } = null!;
         [Required]
-        public string Subject { get; set; }
-
+        [StringLength(SubjectMaxLength, ErrorMessage = SubjectErrorMessage, MinimumLength = SubjectMinLenght)]
+        public string Subject { get; set; } = null!;
+        [Required]
+        [ForeignKey("School")]
+        public string SchoolId { get; set; } = null!;
+        public virtual School School { get; set; } = null!;
+        //[Required]
+        //[ForeignKey("TeacherCourse")]
+        //public Guid TeacherCourseId { get; set; }
+        //public virtual TeacherCourse TeacherCourse { get; set; } = null!;
+        public virtual ICollection<TeacherCourse> TeacherCourses { get; set; }
+        public virtual ICollection<TestPeriod> TestPeriods { get; set; }
+        public virtual ICollection<Diploma> Diplomas { get; set; }
 
     }
 }
