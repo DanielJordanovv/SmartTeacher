@@ -16,7 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartTeacher.Common\SmartTeacher.Common.csproj" />
+    <ProjectReference Include="..\SmartTeacher.Data.Models\SmartTeacher.Data.Models.csproj" />
     <ProjectReference Include="..\SmartTeacher.Data\SmartTeacher.Data.csproj" />
+    <ProjectReference Include="..\SmartTeacher.Infrastructure.Extensions\SmartTeacher.Web.Infrastructure.Extensions.csproj" />
+    <ProjectReference Include="..\SmartTeacher.Infrastructure.ModelBinders\SmartTeacher.Web.Infrastructure.ModelBinders.csproj" />
+    <ProjectReference Include="..\SmartTeacher.Services.Data\SmartTeacher.Services.Data.csproj" />
     <ProjectReference Include="..\SmartTeacher.Web.ViewModels\SmartTeacher.Web.ViewModels.csproj" />
   </ItemGroup>
 
