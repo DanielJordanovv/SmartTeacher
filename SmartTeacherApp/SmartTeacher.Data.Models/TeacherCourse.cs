@@ -5,13 +5,18 @@ namespace SmartTeacher.Data.Models
 {
     public class TeacherCourse
     {
+        public TeacherCourse()
+        {
+            this.CourseId = Guid.NewGuid();
+            this.TeacherId = Guid.NewGuid();
+        }
         [Required]
         [ForeignKey("Teacher")]
-        public int TeacherId { get; set; }
+        public Guid TeacherId { get; set; }
         public virtual Teacher Teacher { get; set; } = null!;
         [Required]
         [ForeignKey("Course")]
-        public int CourseId { get; set; }
+        public Guid CourseId { get; set; }
         public virtual Course Course { get; set; } = null!;
     }
 }

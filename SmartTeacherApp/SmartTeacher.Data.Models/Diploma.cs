@@ -10,6 +10,7 @@ namespace SmartTeacher.Data.Models
         public Diploma()
         {
             this.Id = Guid.NewGuid();
+            this.TeacherId = Guid.NewGuid();
         }
         [Required]
         public Guid Id { get; set; }
@@ -28,7 +29,7 @@ namespace SmartTeacher.Data.Models
         public DateTime ReleaseDate { get; set; }
         [Required]
         [ForeignKey("Teacher")]
-        public int TeacherId { get; set; }
+        public Guid TeacherId { get; set; }
         public virtual Teacher Teacher { get; set; }=null!; 
     }
 }
