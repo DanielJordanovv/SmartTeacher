@@ -11,7 +11,6 @@ namespace SmartTeacher.Data.Models
         {
             this.Id = Guid.NewGuid();
             this.TeacherCourses = new HashSet<TeacherCourse>();
-            //this.TeacherCourseId = Guid.NewGuid();
         }
         public Guid Id { get; set; }
         [Required]
@@ -31,10 +30,6 @@ namespace SmartTeacher.Data.Models
         public virtual FormOfEducation FormOfEducation { get; set; } = null!;
         public int HoursOfEducation { get; set; }
         public int Credits { get; set; }
-        //[Required]
-        //[ForeignKey("TeacherCourse")]
-        //public Guid TeacherCourseId { get; set; }
-        //public virtual TeacherCourse TeacherCourse { get; set; } = null!;
         public virtual ICollection<TeacherCourse> TeacherCourses { get; set; }
     }
 }

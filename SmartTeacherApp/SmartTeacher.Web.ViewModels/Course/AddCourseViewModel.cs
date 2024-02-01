@@ -6,7 +6,7 @@ using SmartTeacher.Data.Models;
 
 namespace SmartTeacher.Web.ViewModels.Course
 {
-    internal class AddCourseViewModel
+    public class AddCourseViewModel
     {
         public AddCourseViewModel()
         {
