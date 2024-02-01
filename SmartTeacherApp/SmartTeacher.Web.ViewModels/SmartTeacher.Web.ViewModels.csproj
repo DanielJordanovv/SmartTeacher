@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SmartTeacher.Common\SmartTeacher.Common.csproj" />
+    <ProjectReference Include="..\SmartTeacher.Data.Models\SmartTeacher.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>
