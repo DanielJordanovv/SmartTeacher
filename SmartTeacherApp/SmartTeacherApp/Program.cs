@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SmartTeacherApp.Controllers;
-using SmartTeacherApp.Data;
 using SmartTeacher.Data;
 
 
