@@ -7,12 +7,13 @@ namespace SmartTeacher.Data.Models
     {
         public TestPeriod()
         {
+            this.TeacherId = Guid.NewGuid();
             this.Id = Guid.NewGuid();
         }
         public Guid Id { get; set; }
         [Required]
         [ForeignKey(nameof(Teacher))]
-        public string TeacherId { get; set; } = null!;
+        public Guid TeacherId { get; set; } 
         public Teacher Teacher { get; set; } = null!;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
