@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.22" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SmartTeacher.Data\SmartTeacher.Data.csproj" />
+    <ProjectReference Include="..\SmartTeacher.Web.ViewModels\SmartTeacher.Web.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

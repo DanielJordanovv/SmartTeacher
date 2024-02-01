@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using static SmartTeacher.Common.EntityValidationConstants.School;
 
 namespace SmartTeacher.Data.Models
 {
@@ -9,16 +9,18 @@ namespace SmartTeacher.Data.Models
         {
             this.Id = Guid.NewGuid().ToString();
             this.Code = Guid.NewGuid();
+            this.Teachers= new HashSet<Teacher>();
         }
         [Required]
         public string Id { get; set; } = null!;
         [Required]
         public Guid Code { get; set; }
         [Required]
-        [StringLength(60, ErrorMessage = "The name should be between 10 and 60", MinimumLength = 10)]
+        [StringLength(FullNameMaxLength, ErrorMessage = FullNameErrorMessage, MinimumLength = FullNameMinLenght)]
         public string FullName { get; set; } = null!;
         [Required]
-        [StringLength(40, ErrorMessage = "The address should be between 5 and 40", MinimumLength = 5)]
+        [StringLength(AddressNumberMaxLength, ErrorMessage = FullNameErrorMessage, MinimumLength = FullNameMinLenght)]
         public string Address { get; set; } = null!;
+        public virtual ICollection<Teacher> Teachers { get; set; }
     }
 }
