@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SmartTeacher.Data;
 
 
@@ -10,7 +11,16 @@ builder.Services.AddDbContext<SmartTeacherDbContext>(options =>
     options.UseSqlServer(connectionString, b => b.MigrationsAssembly("SmartTeacher.Data")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser> (options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 5;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+
+})
     .AddEntityFrameworkStores<SmartTeacherDbContext>();
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
