@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SmartTeacher.Data;
+using SmartTeacher.Services.Data;
+using SmartTeacher.Services.Data.Interfaces;
+using SmartTeacherApp.Controllers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +26,9 @@ builder.Services.AddDefaultIdentity<IdentityUser> (options =>
 })
     .AddEntityFrameworkStores<SmartTeacherDbContext>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<ISchoolService, SchoolService>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
