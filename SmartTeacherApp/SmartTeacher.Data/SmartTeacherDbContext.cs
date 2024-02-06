@@ -1,15 +1,20 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SmartTeacher.Data.Models;
 using SmartTeacher.Data.Models.SeederTables;
+using System.Reflection;
 using System.Reflection.Emit;
 
 namespace SmartTeacher.Data
 {
-    public class SmartTeacherDbContext : IdentityDbContext
+    public class SmartTeacherDbContext : IdentityDbContext<Teacher,IdentityRole<Guid>,Guid>
     {
         public SmartTeacherDbContext(DbContextOptions<SmartTeacherDbContext> options)
             : base(options)
+        {
+        }
+        public SmartTeacherDbContext()
         {
         }
         public virtual DbSet<FormOfEducation> FormOfEducations { get; set; } = null!;
@@ -21,6 +26,9 @@ namespace SmartTeacher.Data
         public virtual DbSet<Request> Requests { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            Assembly configAssembly = Assembly.GetAssembly(typeof(SmartTeacherDbContext)) ??
+                                      Assembly.GetExecutingAssembly();
+            builder.ApplyConfigurationsFromAssembly(configAssembly);
             builder.Entity<TeacherCourse>().HasKey(k => new { k.TeacherId, k.CourseId });
             builder.Entity<Teacher>()
                 .HasOne(t => t.Request)

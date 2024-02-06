@@ -8,7 +8,7 @@ namespace SmartTeacher.Web.ViewModels.School
     {
         public EditSchoolViewModel()
         {
-            this.Teachers = new HashSet<Teacher>();
+            this.Teachers = new HashSet<Data.Models.Teacher>();
         }
         [Required]
         public string Id { get; set; } = null!;
@@ -20,6 +20,6 @@ namespace SmartTeacher.Web.ViewModels.School
         [Required]
         [StringLength(AddressNumberMaxLength, ErrorMessage = FullNameErrorMessage, MinimumLength = FullNameMinLenght)]
         public string Address { get; set; } = null!;
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Data.Models.Teacher> Teachers { get; set; }
     }
 }
