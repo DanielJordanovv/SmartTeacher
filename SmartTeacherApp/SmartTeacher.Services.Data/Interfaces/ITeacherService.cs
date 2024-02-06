@@ -2,5 +2,6 @@
 {
     public interface ITeacherService
     {
+            bool EmailExistsAsync(string email);
     }
 }
