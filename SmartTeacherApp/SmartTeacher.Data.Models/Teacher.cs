@@ -38,10 +38,10 @@ namespace SmartTeacher.Data.Models
         [ForeignKey("School")]
         public string SchoolId { get; set; } = null!;
         public virtual School School { get; set; } = null!;
-        //[Required]
-        //[ForeignKey("TeacherCourse")]
-        //public Guid TeacherCourseId { get; set; }
-        //public virtual TeacherCourse TeacherCourse { get; set; } = null!;
+        [Required]
+        [ForeignKey("Request")]
+        public string RequestId { get; set; } = null!;
+        public virtual Request Request { get; set; } = null!;
         public virtual ICollection<TeacherCourse> TeacherCourses { get; set; }
         public virtual ICollection<TestPeriod> TestPeriods { get; set; }
         public virtual ICollection<Diploma> Diplomas { get; set; }

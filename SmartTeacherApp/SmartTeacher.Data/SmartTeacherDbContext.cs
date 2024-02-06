@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SmartTeacher.Data.Models;
 using SmartTeacher.Data.Models.SeederTables;
+using System.Reflection.Emit;
 
 namespace SmartTeacher.Data
 {
@@ -17,9 +18,15 @@ namespace SmartTeacher.Data
         public virtual DbSet<School> Schools { get; set; } = null!;
         public virtual DbSet<Teacher> Teachers { get; set; } = null!;
         public virtual DbSet<TestPeriod> TestPeriods { get; set; } = null!;
+        public virtual DbSet<Request> Requests { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TeacherCourse>().HasKey(k => new { k.TeacherId, k.CourseId });
+            builder.Entity<Teacher>()
+                .HasOne(t => t.Request)
+                .WithMany()
+                .HasForeignKey(t => t.RequestId)
+                .OnDelete(DeleteBehavior.Restrict);
             base.OnModelCreating(builder);
             SeedQualificationLevels(builder);
             SeedFormOfEdcuation(builder);
