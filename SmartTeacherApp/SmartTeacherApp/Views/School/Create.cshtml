@@ -1,0 +1,28 @@
+﻿﻿@using SmartTeacher.Web.ViewModels.School
+@model AddSchoolViewModel
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <p style="color:red;">@TempData["ErrorMessage"]</p>
+    </div>
+}
+
+<form asp-controller="School" asp-action="Create" method="post">
+    <div class="create-box">
+        <h2>Create School</h2>
+        <div class="bc-box">
+            <label asp-for="FullName">Name:</label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="bc-box">
+            <label asp-for="Address">Address:</label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <button type="submit" class="submit-button">Create</button>
+        <p></p>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
