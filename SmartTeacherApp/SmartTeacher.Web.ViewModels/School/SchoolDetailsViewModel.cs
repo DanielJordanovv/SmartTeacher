@@ -8,12 +8,12 @@ namespace SmartTeacher.Web.ViewModels.School
         {
             this.Id = Guid.NewGuid().ToString();
             this.Code = Guid.NewGuid();
-            this.Teachers = new List<Teacher>();
+            this.Teachers = new HashSet<Data.Models.Teacher>();
         }
         public string Id { get; set; } = null!;
         public Guid Code { get; set; }
         public string FullName { get; set; } = null!;
         public string Address { get; set; } = null!;
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Data.Models.Teacher> Teachers { get; set; }
     }
 }

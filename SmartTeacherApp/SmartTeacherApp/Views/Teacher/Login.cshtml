@@ -1,0 +1,63 @@
+﻿﻿@using SmartTeacher.Web.ViewModels.Teacher
+@model LoginFormModel
+<link rel="stylesheet" href="~/css/user/login.css" asp-append-version="true" />
+<link rel=”stylesheet” href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="nofollow" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+<pre></pre><pre></pre><pre></pre>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <div class="login-box">
+                <h2>Log in</h2>
+                <form id="account" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <p></p>
+                    <p></p>
+                    <div class="user-box">
+                        <pre></pre>
+                        <input asp-for="Username" class="form-control" autocomplete="username" aria-required="true" />
+                        <pre></pre>
+                        <pre></pre>
+                        <label asp-for="Username" class="form-label"></label>
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="user-box">
+                        <pre></pre>
+                        <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                        <pre></pre>
+                        <pre></pre>
+                        <label asp-for="Password" class="form-label"></label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="checkbox">
+                        <label asp-for="RememberMe" class="remember-label">
+                            <input class="form-check-input" asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                    <div>
+                        <button class="submit-button" id="login-submit" type="submit">Log in</button>
+                    </div>
+                    <div>
+                        <p class="register-question">Don't have an account?</p>
+                        <a class="register-button" asp-controller="Teacher" asp-action="Register">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Register
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <p style="color:red">@TempData["ErrorMessage"]</p>
+    </div>
+}
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
