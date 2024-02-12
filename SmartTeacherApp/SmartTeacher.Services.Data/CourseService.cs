@@ -40,9 +40,9 @@ namespace SmartTeacher.Services.Data
             await context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<AllCoursesViewModel>> AllAsync()
+        public async Task<IEnumerable<AllCoursesViewModel>> AllAsync(string schoolId)
         {
-            return await context.Courses.Where(x => x.StartDate.Date < DateTime.Now)
+            return await context.Courses.Where(x => x.StartDate.Date < DateTime.Now && x.SchoolId == schoolId)
                 .Select(p => new AllCoursesViewModel
                 {
                     Id = p.Id,
@@ -101,7 +101,7 @@ namespace SmartTeacher.Services.Data
         public async Task<IEnumerable<AllCoursesViewModel>> AllSearchedAsync(string search)
         {
             Guard.ArgumentNotNull(search, nameof(search));
-            return await context.Courses.Where(x => x.Name.ToLower().Contains(search.ToLower())).Select(p => new AllCoursesViewModel
+            return await context.Courses.Where(x => x.Name.ToLower().Contains(search.ToLower()) && x.StartDate.Date < DateTime.Now).Select(p => new AllCoursesViewModel
             {
                 Id = p.Id,
                 Name = p.Name,

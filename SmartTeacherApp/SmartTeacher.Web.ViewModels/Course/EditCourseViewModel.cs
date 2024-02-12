@@ -32,5 +32,9 @@ namespace SmartTeacher.Web.ViewModels.Course
         public int HoursOfEducation { get; set; }
         public int Credits { get; set; }
         public virtual ICollection<TeacherCourse> TeacherCourses { get; set; }
+        [Required]
+        [ForeignKey("School")]
+        public string SchoolId { get; set; }
+        public virtual SmartTeacher.Data.Models.School School { get; set; } = null!;
     }
 }
