@@ -16,5 +16,9 @@ namespace SmartTeacher.Data.Models
         [ForeignKey("Teacher")]
         public Guid TeacherId { get; set; }
         public virtual Teacher Teacher { get; set; } = null!;
+        [Required]
+        [ForeignKey("School")]
+        public string SchoolId { get; set; }
+        public virtual School School { get; set; } = null!;
     }
 }

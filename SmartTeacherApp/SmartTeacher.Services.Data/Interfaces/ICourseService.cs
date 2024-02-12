@@ -5,7 +5,7 @@ namespace SmartTeacher.Services.Data.Interfaces
 {
     public interface ICourseService
     {
-        Task<IEnumerable<AllCoursesViewModel>> AllAsync();
+        Task<IEnumerable<AllCoursesViewModel>> AllAsync(string schoolId);
         Task<IEnumerable<AllCoursesViewModel>> AllSearchedAsync(string search);
         Task<CourseDetailsViewModel> GetDetailsByIdAsync(string id);
         Task CreateAsync(AddCourseViewModel model);
