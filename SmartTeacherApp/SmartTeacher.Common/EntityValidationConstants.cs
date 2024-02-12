@@ -54,6 +54,9 @@
             public const int LastNameMaxLength = 20;
             public const string LastNameErrorMessage = "The last name should be between 10 and 60";
 
+            public const int PasswordMinLength = 5;
+            public const int PasswordMaxLength = 20;
+
             public const int BirthplaceMinLenght = 3;
             public const int BirthplaceMaxLength = 20;
             public const string BirthplaceErrorMessage = "The birthplace should be between 10 and 60";

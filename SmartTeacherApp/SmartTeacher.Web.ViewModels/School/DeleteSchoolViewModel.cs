@@ -7,6 +7,10 @@ namespace SmartTeacher.Web.ViewModels.School
 {
     public class DeleteSchoolViewModel
     {
+        public DeleteSchoolViewModel()
+        {
+            this.Teachers = new HashSet<Data.Models.Teacher>();
+        }
         [Required]
         public string Id { get; set; } = null!;
         [Required]
@@ -17,6 +21,6 @@ namespace SmartTeacher.Web.ViewModels.School
         [Required]
         [StringLength(AddressNumberMaxLength, ErrorMessage = FullNameErrorMessage, MinimumLength = FullNameMinLenght)]
         public string Address { get; set; } = null!;
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Data.Models.Teacher> Teachers { get; set; }
     }
 }
